@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
-import Goals from "./Goals";
 import RecordProgress from "./RecordProgress";
 import Progress from "./Progress";
 import Graph from "./Graph";
 import Footer from "./Footer";
 
 function App() {
+    const [progresses, setProgresses] = useState([]);
+
+    function addProgress(newProgress) {
+        setProgresses(prevProgress => {
+            return [...prevProgress, newProgress];
+        });
+    }
+
+    function deleteProgress(id) {
+        setProgresses(prevProgress => {
+            return prevProgress.filter((progressItem, index) => {
+                return index !== id;
+            });
+        });
+    }
+
     return (
         <div>
             <NavBar />
             <Goals />
-            <RecordProgress />
+            <RecordProgress onCreate={addProgress} />
             {progresses.map((progressItem, index) => {
                 return (
                     <Progress
@@ -19,6 +34,7 @@ function App() {
                         id={index}
                         title={progressItem.title}
                         content={progressItem.content}
+                        onDelete={deleteProgress}
                     />
                 );
             })}
