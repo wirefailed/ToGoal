@@ -25,7 +25,6 @@ function App() {
     return (
         <div>
             <NavBar />
-            <Goals />
             <RecordProgress onCreate={addProgress} />
             {progresses.map((progressItem, index) => {
                 return (
