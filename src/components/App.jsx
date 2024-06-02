@@ -34,6 +34,8 @@ function App() {
                         id={index}
                         title={progressItem.title}
                         content={progressItem.content}
+                        time={progressItem.time}
+                        percentage={progressItem.percentage}
                         onDelete={deleteProgress}
                     />
                 );

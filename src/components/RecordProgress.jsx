@@ -63,3 +63,5 @@ function RecordProgress(props) {
         </div>
     )
 }
+
+export default RecordProgress;
