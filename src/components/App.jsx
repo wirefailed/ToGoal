@@ -6,6 +6,7 @@ import Graph from "./Graph";
 import Footer from "./Footer";
 
 function App() {
+    
     const [progresses, setProgresses] = useState([]);
 
     function addProgress(newProgress) {
