@@ -17,7 +17,12 @@ function Goal(props) {
         props.onDelete(props.index);
     }
 
+    function handleAddNewGoal() {
+        props.onCreate();
+    }
+
     return (
+
         <div className="Goal">
             {isEditing ? (
                 <input 
@@ -31,9 +36,12 @@ function Goal(props) {
             {isEditing ? (
                 <button onClick={handleSave}>Save</button>
             ) : (
-                <button onClick={handleEdit}>Edit</button>
+                <div>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
+                    <button onClick={handleAddNewGoal}>Add New Goal</button>
+                </div>
             )}
-            <button onClick={handleDelete}>Delete</button>
         </div>
     );
 }
