@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function RecordProgress(props) {
     const [progress, setProgress] = useState({
+        goalIndex: props.goalIndex,
         title: "",
         content: "",
         time: "",
@@ -22,6 +23,7 @@ function RecordProgress(props) {
     function submitProgress(event) {
         props.onCreate(progress);
         setProgress({
+            goalIndex: props.goalIndex,
             title: "",
             content: "",
             time: "",

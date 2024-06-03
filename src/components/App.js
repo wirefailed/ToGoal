@@ -29,7 +29,7 @@ function App() {
 
     function handleUpdateGoal (selectedIndex, editedTitle) {
         const updatedGoals = goals.map((otherGoal, index) => 
-            index === selectedIndex ? {...otherGoal, title: editedTitle} : goal // through iterating map, I find the goal that is being edited and while mainting my properties through ...otherGoal, I change the title
+            index === selectedIndex ? {...otherGoal, title: editedTitle} : otherGoal // through iterating map, I find the goal that is being edited and while mainting my properties through ...otherGoal, I change the title
         );
         setGoals(updatedGoals);
     }
@@ -56,20 +56,23 @@ function App() {
 
     return (
         <div>
-            <NavBar goals={goals} onGoalSelect={handleGoalSelection}/>
-            {goals.length > 0 ? (
-                <Goal
+            <NavBar 
+                goals={goals} 
+                onGoalSelect={handleGoalSelection}
+            />
+            
+            <Goal
                 goal={goals[selectedGoalIndex]}
                 index={selectedGoalIndex}
                 onUpdate={handleUpdateGoal}
                 onDelete={handleDeleteGoal}
                 onCreate={addNewGoal}
             />
-            ) : (
-                <p>No Goals to display</p>
-            )}
-            <RecordProgress onCreate={addProgress} />
-            {progresses.map((progressItem, index) => {
+            
+            <RecordProgress onCreate={addProgress} goalIndex={selectedGoalIndex} />
+            {progresses
+                .filter(progress => progress.goalIndex === selectedGoalIndex)
+                .map((progressItem, index) => {
                 return (
                     <Progress
                         key={index}
