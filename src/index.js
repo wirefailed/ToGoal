@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App.jsx";
+import App from "./components/App.js";
 import express from "express";
 
 const app = express();
