@@ -8,8 +8,7 @@ import Footer from "./Footer";
 
 function App() {
     const [goals, setGoals] = useState([{
-        title: "",
-        progresses: [],
+        title: "New Goal",
     }])
     const [selectedGoalIndex, setSelectedGoalIndex] = useState(0);
     const [progresses, setProgresses] = useState([]);
